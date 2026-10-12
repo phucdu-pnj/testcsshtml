@@ -9,11 +9,10 @@ BASE_DIR = Path(__file__).resolve().parent
 VIDEO_FILE = BASE_DIR / "static" / "video" / "stock_simulation.gif"
 
 app = FastAPI(title="Mo phong CLT")
-app.mount(
-	"/static",
-	StaticFiles(directory=BASE_DIR / "static"),
-	name="static",
-)
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+@app.get("/")
+def home(request: Request):
 templates = Jinja2Templates(directory=BASE_DIR / "templates")
 
 
